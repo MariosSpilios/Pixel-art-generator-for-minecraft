@@ -54,11 +54,16 @@ Transparent pixels are coded as **air**.
 ## Performance
 
 In early builds, the program was really slow, so slow that it took up to 64s for a 500x500 schematic!
+
 Even in version 2.0 where i introduced multiprocessing it still was quiet slow. So in the end i decided to get help
-from the goated language called C!
-I implemented the block matcher in C which greatly reduced generation time of the program, but it still wasn't fast
-enough. Then i found out i can bypass litemapy's __setitem__() and directly insert the blocks into the schematic with
-the programs own palette.
+from a realy fast language, C!
+
+I implemented the block matcher in C which greatly reduced the generation time of the schematic by more than half the old time,
+but it still wasn't fast enough!
+
+I dag into litemapy's functions and methods and found out i can bypass litemapy's Region.__setitem__() and directly insert the blocks into the schematic
+and also using the programs own block palette.
+
 The performance can still be improved by using libraries other than litemapy, like nucleation, which in tests has
 shown way better peformance than litemapy.
 
@@ -68,19 +73,17 @@ shown way better peformance than litemapy.
 
 You are not forced to use the entire Minecraft block palette.
 
-The block selection menu allows you to control exactly which blocks can appear in the generated pixel art.
+The block selection menu allows you to control which blocks can appear in the generated pixel art.
 
 You can:
 
 - Enable or disable individual blocks
 - Enable or disable entire block categories
-- Quickly create custom palettes
-- See the texture of each block directly in the interface
+- See the texture of each block directly in the select blocks menu
 
 This is useful if you want to:
 
 - Avoid expensive blocks
-- Use only survival-friendly materials
 - Create pixel art using a specific block theme
 - Restrict the generator to blocks you already have
 
@@ -88,11 +91,9 @@ This is useful if you want to:
 
 ## Transparency
 
-Images containing transparency are supported.
+Images containing transparent pixels are supported, but it doesn't work all the time. Some photos might generate with random blocks in transparent locations if the photo's mode is different (the A value in RGBA mode).
 
-Pixels with transparency are treated as empty space and become **air** in the generated schematic instead of being matched with a Minecraft block.
-
-This makes PNG images with transparent backgrounds especially useful for pixel art.
+Pixels with transparent pixels are treated as empty space and become **air** in the generated schematic.
 
 ---
 
@@ -100,57 +101,24 @@ This makes PNG images with transparent backgrounds especially useful for pixel a
 
 The generated files use the `.litematic` format and can be loaded directly using the **Litematica** Minecraft mod.
 
-The program itself does not place blocks inside your Minecraft world. It generates the schematic that Litematica can display and assist you in building.
-
 ---
 
 ## Built With
 
-The project is primarily built using:
+The project is built using:
 
-- **Python**
-- **C** for performance-critical color matching
-- **Tkinter / ttk** for the graphical interface
+- **Python 3.14.7**
+- **C** for fast block matching
+- **Tkinter / ttk / Custom Tkinter** for the GUI
 - **Pillow** for image processing
-- **Litemapy** for creating and saving `.litematic` files
+- **Litemapy** for creating the `.litematic` files
 
 ---
 
 ## Running From Source
 
 If you prefer to run the project directly from the source code, clone the repository and make sure the required Python dependencies are installed.
-
-Example:
-
-```bash
-git clone <repository-url>
-cd <repository-folder>
-```
-
-Then run:
-
-```bash
-python main.py
-```
-
-The exact dependencies and additional files required may depend on the version of the project.
-
-For most users, downloading the pre-built executable from **Releases** is recommended.
-
----
-
-## Screenshots
-
-<!--
-Add screenshots or GIFs of the program here.
-
-For example:
-
-- Main window
-- Block selection menu
-- Schematic preview
-- Final Minecraft result
--->
+Then unzip the Source.zip archive from the latest release and you will find the sources for the program.
 
 ---
 
@@ -160,7 +128,7 @@ For example:
 
 A huge thanks to the developers of **Litemapy**.
 
-This project uses Litemapy to create and save Minecraft `.litematic` schematic files.
+This project uses Litemapy to create Minecraft `.litematic` schematic files.
 
 https://github.com/SmylerMC/litemapy
 
@@ -172,7 +140,7 @@ Without their work, implementing `.litematic` support would have been significan
 
 If you find a bug, experience a crash, or have an idea for a new feature, feel free to open an **Issue** on GitHub.
 
-When reporting a bug, including the following information can help:
+When reporting a bug include the following information for more help:
 
 - Program version
 - Image resolution
@@ -180,25 +148,3 @@ When reporting a bug, including the following information can help:
 - Number of selected blocks
 - Screenshot or error message
 - Steps needed to reproduce the problem
-
----
-
-## Project Status
-
-Minecraft Pixel Art Generator is actively being developed.
-
-New versions continue to improve:
-
-- Performance
-- User interface
-- Block selection
-- Schematic generation
-- Previewing
-- Stability
-- Overall ease of use
-
-Check the **Releases** section for the latest version and release notes.
-
----
-
-### Minecraft image → Minecraft blocks → `.litematic` 🚀
