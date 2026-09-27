@@ -56,7 +56,7 @@ Transparent pixels are coded as **air**.
 In early builds, the program was really slow, so slow that it took up to 64s for a 500x500 schematic!
 
 Even in version 2.0 where i introduced multiprocessing it still was quiet slow. So in the end i decided to get help
-from a realy fast language, C!
+from a really fast language, C!
 
 I implemented the block matcher in C which greatly reduced the generation time of the schematic by more than half the old time,
 but it still wasn't fast enough!
