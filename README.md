@@ -53,19 +53,19 @@ Transparent pixels are coded as **air**.
 
 ## Performance
 
-In early builds, the program was really slow, so slow that it took up to 64s for a 500x500 schematic!
+In early builds, the program was really slow, so slow that it took up to 64s for a 576x324 schematic!
 
-Even in version 2.0 where i introduced multiprocessing it still was quiet slow. So in the end i decided to get help
+Even in version 2.0, where I introduced multiprocessing, it still was quite slow. So in the end i decided to get help
 from a really fast language, C!
 
 I implemented the block matcher in C which greatly reduced the generation time of the schematic by more than half the old time,
 but it still wasn't fast enough!
 
-I dag into litemapy's functions and methods and found out i can bypass litemapy's Region.__setitem__() and directly insert the blocks into the schematic
-and also using the programs own block palette.
+I dug into Litemapy's internal functions and methods and found out I could bypass litemapy's Region.__setitem__() and insert the blocks directly into the schematic
+while using the program's own block palette.
 
-The performance can still be improved by using libraries other than litemapy, like nucleation, which in tests has
-shown way better peformance than litemapy.
+The performance can still be improved by using libraries other than litemapy, like Nucleation.
+In my tests, Nucleation has shown way better performance than Litemapy.
 
 ---
 
@@ -91,9 +91,9 @@ This is useful if you want to:
 
 ## Transparency
 
-Images containing transparent pixels are supported, but it doesn't work all the time. Some photos might generate with random blocks in transparent locations if the photo's mode is different (the A value in RGBA mode).
+Images with an alpha value, such as RGBA images, support transparency. Some image modes are not handled correctly yet and may generate unexpected blocks in areas that should be transparent.
 
-Pixels with transparent pixels are treated as empty space and become **air** in the generated schematic.
+Transparent pixels are treated as empty space and become **air** in the generated schematic.
 
 ---
 
@@ -117,8 +117,7 @@ The project is built using:
 
 ## Running From Source
 
-If you prefer to run the project directly from the source code, clone the repository and make sure the required Python dependencies are installed.
-Then unzip the Source.zip archive from the latest release and you will find the sources for the program.
+If you prefer to run the project directly from the source code, download and extract Sources.zip from the latest release.
 
 ---
 
