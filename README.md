@@ -121,7 +121,7 @@ If you prefer to run the project directly from the source code, download and ext
 
 - **Litemapy** (For version up to 3.1)
 
-This project uses Litemapy to create Minecraft `.litematic` schematic files.
+Used for `.litematic` creation up to version 3.1 and currently used by the schematic preview for reading packed block-state data.
 https://github.com/SmylerMC/litemapy
 
 From version 3.3 and on:
