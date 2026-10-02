@@ -58,7 +58,7 @@ In early builds, the program was really slow, so slow that it took up to 64s for
 Even in version 2.0, where I introduced multiprocessing, it still was quite slow. So in the end i decided to get help
 from a really fast language, C!
 
-As of version 3.3 and on, the whole generator in written in C. Image processing, resize, block matching and writing the `.litematic` schematic.
+As of version 3.3 and on, the whole generator is written in C. Image processing, resize, block matching and writing the `.litematic` schematic.
 
 ---
 
@@ -103,10 +103,10 @@ The project is built using:
 - **Python 3.14.7**
 - **C** for the generator backend
 - **Tkinter / ttk / Custom Tkinter** for the GUI
-- **Pillow** for image processing (up to version 3.1)
-- **Litemapy** for creating the `.litematic` files (up to version 3.1)
-- **stb** library for loading image in C (version 3.3+)
-- **libnbt** for writing the schematics (version 3.3+)
+- **Pillow** for schematic preview rendering
+- **Litemapy** for `.litematic` creation up to version 3.1, and for reading packed block-state data in the schematic preview
+- **stb** for image loading and resizing in C (version 3.3+)
+- **libnbt** for writing `.litematic` files (version 3.3+)
 - **miniz** for gzip/zlib compression (version 3.3+)
 
 ---
