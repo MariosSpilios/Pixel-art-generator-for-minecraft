@@ -113,7 +113,7 @@ The project is built using:
 
 ## Running From Source
 
-If you prefer to run the project directly from the source code, download and extract Sources.zip from the latest release.
+If you prefer to run the project directly from the source code, download and extract the source code `.zip` from the latest release.
 
 ---
 
