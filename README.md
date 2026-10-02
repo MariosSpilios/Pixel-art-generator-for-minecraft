@@ -58,14 +58,7 @@ In early builds, the program was really slow, so slow that it took up to 64s for
 Even in version 2.0, where I introduced multiprocessing, it still was quite slow. So in the end i decided to get help
 from a really fast language, C!
 
-I implemented the block matcher in C which greatly reduced the generation time of the schematic by more than half the old time,
-but it still wasn't fast enough!
-
-I dug into Litemapy's internal functions and methods and found out I could bypass litemapy's Region.__setitem__() and insert the blocks directly into the schematic
-while using the program's own block palette.
-
-The performance can still be improved by using libraries other than litemapy, like Nucleation.
-In my tests, Nucleation has shown way better performance than Litemapy.
+As of version 3.3 and on, the whole generator in written in C. Image processing, resize, block matching and writing the `.litematic` schematic.
 
 ---
 
@@ -108,10 +101,13 @@ The generated files use the `.litematic` format and can be loaded directly using
 The project is built using:
 
 - **Python 3.14.7**
-- **C** for fast block matching
+- **C** for the generator backend
 - **Tkinter / ttk / Custom Tkinter** for the GUI
-- **Pillow** for image processing
-- **Litemapy** for creating the `.litematic` files
+- **Pillow** for image processing (up to version 3.1)
+- **Litemapy** for creating the `.litematic` files (up to version 3.1)
+- **stb** library for loading image in C (version 3.3+)
+- **libnbt** for writing the schematics (version 3.3+)
+- **miniz** for gzip/zlib compression (version 3.3+)
 
 ---
 
@@ -123,15 +119,26 @@ If you prefer to run the project directly from the source code, download and ext
 
 ## Credits
 
-### Litemapy
-
-A huge thanks to the developers of **Litemapy**.
+- **Litemapy** (For version up to 3.1)
 
 This project uses Litemapy to create Minecraft `.litematic` schematic files.
-
 https://github.com/SmylerMC/litemapy
 
-Without their work, implementing `.litematic` support would have been significantly more difficult.
+From version 3.3 and on:
+
+Special thanks to the developers of the following libraries used in this project:
+
+- **stb** by Sean Barrett and contributors  
+  Used for image loading and resizing (`stb_image.h`, `stb_image_resize2.h`).  
+  https://github.com/nothings/stb
+
+- **libnbt** by Celisium
+  Used for creating and writing Minecraft NBT / `.litematic` files.
+  https://github.com/Celisium/libnbt
+
+- **miniz** by Rich Geldreich and contributors  
+  Used by the NBT writer for gzip/zlib compression.  
+  https://github.com/richgel999/miniz
 
 ---
 
